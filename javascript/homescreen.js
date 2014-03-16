@@ -16,21 +16,25 @@ function appify_links() {
 }
 
 function app_refresh(url) {
-    create_overlay();
+    spinner_overlay();
     window.location.href = url;
     return false;
 }
 
-function create_overlay() {
+function iframe_reload() {
+    jQuery('iframe').element.scrollIntoView(true);
+}
+
+function spinner_overlay() {
     var overlay = document.createElement("div");
-    overlay.setAttribute("id","overlay");
-    overlay.setAttribute("class", "full_overlay");
+    overlay.setAttribute("id","transition_overlay");
+    overlay.setAttribute("class", "transition_overlay");
     document.body.appendChild(overlay);
 
     var close = document.createElement("i");
     close.setAttribute('id','spinner');
     close.setAttribute('class','fa fa-spinner fa-spin fa-3x');
-    close.setAttribute('style','color: #fff; margin-top: 100px;');
+    close.setAttribute('style','color: #fff; margin-top: 200px;');
     overlay.appendChild(close);
     overlay.scrollIntoView(true);
 
